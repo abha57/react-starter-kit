@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name:": "barbeque",
+      "location": ["delhi", "mumbai"],
+      "rating": 4.6,
+      "description": "lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume",
+      "image": "src/client/public/images-four.jpg"
+    },
+    {
+      "id": 2,
+      "name:": "barbeque",
+      "location": ["delhi", "mumbai"],
+      "rating": 4.6,
+      "description": "lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume",
+      "image": "src/client/public/images-five.jpg"
+    },
+    {
+      "id": 3,
+      "name:": "barbeque",
+      "location": ["delhi", "mumbai"],
+      "rating": 4.6,
+      "description": "lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume",
+      "image": "src/client/public/images-two.jpg"
+    },
+    {
+      "id": 4,
+      "name:": "barbeque",
+      "location": ["delhi", "mumbai", "bangalore"],
+      "rating": 4.6,
+      "description": "lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume lorem ispsume",
+      "image": "src/client/public/images-three.jpg"
+    }
+  ]
+}
