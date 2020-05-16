@@ -9,16 +9,16 @@ const List = props => {
         <thead>
           <tr>
             {headers.length > 0 &&
-              headers.map(header => <th key={header}>{header}</th>)}
+              headers.map((header, index) => <th key={`${header}-${index}`}>{header}</th>)}
           </tr>
         </thead>
         <tbody>
           {tableData.length > 0 &&
             tableData.map(tableRow => (
               <tr key={tableRow.restaurantID}>
-                {headers.map(header => (
+                {headers.map((header, index) => (
                   <td
-                    key={`${tableRow.restaurantID}-${tableRow.restaurantName}`}
+                    key={`${tableRow.restaurantID}-${tableRow.restaurantName}-${index}`}
                   >
                     {tableRow[header]}
                   </td>
