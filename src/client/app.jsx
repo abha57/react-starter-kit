@@ -1,10 +1,12 @@
 import React from "react";
-
+import Header from './components/Header';
 
 const App = () => {
     return (
         <React.Fragment>
-            Hello world!!!!!!!!!
+           <div className='container'>
+            <Header />
+           </div>
         </React.Fragment>
     )
 };
