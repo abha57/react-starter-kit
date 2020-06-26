@@ -1,0 +1,68 @@
+.cover {
+  position: relative;
+  //   display: -webkit-box;
+  //   display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 65vh;
+  min-height: 615px;
+  background: #f9f9fb;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-start;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+  &.cover-post-background {
+    overflow: hidden;
+    height: calc(100vh - 102px);
+    background: #db2222;
+  }
+  .cover-background {
+    background-image: url('https://wpamelia.com/wp-content/uploads/2018/10/Webp.net-resizeimage-1.jpg');
+    position: absolute;
+    z-index: 150;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: fadeIn 3s;
+    animation: fadeIn 3s;
+    opacity: 1;
+    background-color: #404040;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    will-change: opacity;
+  }
+  .cover-contents {
+    margin-bottom: 85px;
+    max-width: 905px;
+    position: relative;
+    z-index: 200;
+    width: 50%;
+    margin-left: 90px;
+    margin-top: 90px;
+
+    .post-title {
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 1.8;
+      text-align: center;
+    }
+    .post-content {
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1.8;
+    }
+  }
+}
