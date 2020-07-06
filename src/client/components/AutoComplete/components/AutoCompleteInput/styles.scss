@@ -1,0 +1,28 @@
+.auto-input {
+  border: 1px solid;
+  height: auto;
+  width: 100%;
+  min-height: 65px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.button {
+  padding: 10px;
+  margin-bottom: 30px;
+  background-color: green;
+  color: white;
+}
+
+.max-movies {
+  background-color: red;
+}
+
+.movie-list {
+  position: absolute;
+  z-index: 200;
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  top: 30px;
+  width: inherit;
+}
