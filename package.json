@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
+    "@welldone-software/why-did-you-render": "^4.2.6",
     "babel-loader": "^8.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "css-loader": "^3.5.3",

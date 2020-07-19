@@ -7,7 +7,8 @@ import './styles.scss';
 const AutoCompleteInput = ({
   movies,
   chips,
-  inputProps,
+  // inputProps,
+  onInputChange,
   onMovieListClick,
   removeMovie,
   removeMovieList
@@ -47,7 +48,7 @@ const AutoCompleteInput = ({
               />
             ))
           : null}
-        <Input inputProps={inputProps} />
+        <Input onInputChange={onInputChange} />
         {movies && movies.length > 0 ? (
           <div ref={listRef} className="movie-list">
             <List movies={movies} onMovieListClick={onMovieListClick} />

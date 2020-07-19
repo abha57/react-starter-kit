@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './styles.scss';
 
 const Chips = ({ chip, removeMovie }) => {
@@ -15,4 +15,4 @@ const Chips = ({ chip, removeMovie }) => {
   );
 };
 
-export default Chips;
+export default memo(Chips);

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useCallback } from 'react';
 import AutoCompleteInput from './components/AutoCompleteInput';
 import './styles.scss';
 
@@ -94,6 +94,7 @@ const AutoComplete = () => {
         return initialState;
     }
   };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const debouncedApiCall = function(fn, delay) {
     let interval = null;
@@ -134,16 +135,18 @@ const AutoComplete = () => {
       );
   };
 
-  const onMovieListClick = movie => {
+  const onMovieList = movie => {
     dispatch({
       type: types.ADD_MOVIE_IN_CHIPS,
       payload: {
         movie
       }
     });
+    return movie;
   };
+  const onMovieListClick = useCallback(movie => onMovieList(movie), []);
 
-  const removeMovie = movie => {
+  const removeMovieClick = movie => {
     dispatch({
       type: types.REMOVE_MOVIE_IN_CHIPS,
       payload: {
@@ -151,14 +154,20 @@ const AutoComplete = () => {
       }
     });
   };
+  const removeMovie = useCallback(movie => removeMovieClick(movie), []);
 
-  const removeMovieList = () => {
+  const removeMovieListClick = () => {
     dispatch({
       type: types.REMOVE_MOVIE_LIST
     });
   };
-
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const removeMovieList = useCallback(() => removeMovieListClick(), []);
+  // const inputChangeCallback = useCallback(
+  //   param => debouncedApiCall(onInputChange, 1500)(param),
+  //   []
+  // );
+  const debouncedFunc = debouncedApiCall(onInputChange, 1500);
+  const debouncedFuncCallback = useCallback(param => debouncedFunc(param), []);
 
   return (
     <AutoCompleteInput
@@ -167,9 +176,10 @@ const AutoComplete = () => {
       onMovieListClick={onMovieListClick}
       removeMovie={removeMovie}
       removeMovieList={removeMovieList}
-      inputProps={{
-        onInputChange: debouncedApiCall(onInputChange, 500)
-      }}
+      // inputProps={{
+      //   onInputChange: debouncedFuncCallback
+      // }}
+      onInputChange={debouncedFuncCallback}
     />
   );
 };

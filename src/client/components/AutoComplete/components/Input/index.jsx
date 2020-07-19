@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 
-const Input = ({ inputProps }) => {
-  const { onInputChange } = inputProps;
+const Input = ({ onInputChange }) => {
+  // const { onInputChange } = inputProps;
   const [inputValue, setInputValue] = useState(null);
   const performChanges = event => {
     setInputValue(event.target.value);
@@ -10,4 +10,4 @@ const Input = ({ inputProps }) => {
   return <input type="text" className="input" onChange={performChanges} />;
 };
 
-export default Input;
+export default memo(Input);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './styles.scss';
 
 const List = ({ movies, onMovieListClick }) => {
@@ -21,4 +21,4 @@ const List = ({ movies, onMovieListClick }) => {
   );
 };
 
-export default List;
+export default memo(List);
