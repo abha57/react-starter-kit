@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -25,17 +24,6 @@ const plugins = [
   new webpack.HashedModuleIdsPlugin(), // so that file hashes don't change unexpectedly
   new CaseSensitivePathsPlugin(),
   new DuplicatePackageCheckerPlugin(),
-  // new BundleAnalyzerPlugin({
-  //     analyzerMode: 'static',
-  //     reportFilename: 'report.html',
-  //     openAnalyzer: true,
-  //     statsFilename: 'stats.json',
-  //     logLevel: 'info',
-  // }),
-  // new AssetsPlugin({
-  // path: staticsPath,
-  //   filename: 'assets.json'
-  // }),
   new HtmlWebpackPlugin({
     template: './src/client/index.html',
     filename: 'index.html'
