@@ -1,0 +1,22 @@
+.container {
+  max-width: 100%;
+}
+
+// tablet styles
+@media screen and (min-width: 620px) {
+}
+
+// large tablet  and laptop styles
+@media screen and (min-width: 960px) {
+}
+
+// desktop styles
+@media screen and (min-width: 1200px) {
+  body {
+    background-position: 110% 40%;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}

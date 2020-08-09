@@ -1,11 +1,11 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 
 // The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags.
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -15,6 +15,9 @@ const staticsPath = path.join(__dirname, './dist/static');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
+
+const appDirectory = fs.realpathSync(process.cwd());
+const srcDirectory = path.resolve(appDirectory, 'src');
 
 const plugins = [
   // ExtractCSS,
@@ -79,7 +82,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(gif|png|jpg|jpeg|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        test: /\.(gif|png|jpg|jpeg|otf|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: 'file-loader'
       },
       {
@@ -115,8 +118,22 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
-    modules: [sourcePath, 'node_modules']
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.scss'],
+    modules: [sourcePath, 'node_modules'],
+    alias: {
+      'fonts': path.resolve(
+        srcDirectory,
+        'assets/Fonts/Metropolis/Metropolis-Black.otf'
+      ),
+      'client':  path.resolve(
+        srcDirectory,
+        'client'
+      ),
+      'assets': path.resolve(
+        srcDirectory,
+        'assets'
+      ),
+    }
   },
   plugins
 };
