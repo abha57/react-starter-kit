@@ -1,0 +1,30 @@
+.tiles-container {
+  display: grid;
+  grid-template-columns: 12;
+  column-gap: 10px;
+  row-gap: 10px;
+
+  .tile {
+    grid-column: 1/13;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+}
+
+// tablet styles
+@media screen and (min-width: 700px) {
+  .tile {
+    grid-column: 1/5;
+  }
+}
+
+// large tablet  and laptop styles
+@media screen and (min-width: 1024px) {
+  .tile {
+    grid-column: 1/4;
+  }
+}
+
+// desktop styles
+@media screen and (min-width: 1400px) {
+}

@@ -1,0 +1,50 @@
+body {
+  padding: 10px;
+}
+.container {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  .header {
+    grid-column: 1/13;
+    border-bottom: 2px solid;
+    grid-row: 1;
+  }
+
+  .filter {
+    grid-column: 1/13;
+    grid-row: 2;
+  }
+  .tiles {
+    grid-column: 1/13;
+    grid-row: 3;
+  }
+}
+
+// tablet styles
+@media screen and (min-width: 700px) {
+}
+
+// large tablet  and laptop styles
+@media screen and (min-width: 1024px) {
+  .filter {
+    grid-column: 1/4;
+    grid-row: 2;
+  }
+  .tiles {
+    grid-column: 4/13;
+    grid-row: 2;
+  }
+}
+
+// desktop styles
+@media screen and (min-width: 1400px) {
+  body {
+    background-position: 110% 40%;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
