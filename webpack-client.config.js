@@ -121,12 +121,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.scss'],
     modules: [sourcePath, 'node_modules'],
     alias: {
-      fonts: path.resolve(
-        srcDirectory,
-        'assets/Fonts/Metropolis/Metropolis-Black.otf'
-      ),
-      client: path.resolve(srcDirectory, 'client'),
-      assets: path.resolve(srcDirectory, 'assets')
+      client: path.resolve(srcDirectory, 'client')
     }
   },
   plugins

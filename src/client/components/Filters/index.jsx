@@ -44,5 +44,4 @@ const Filters = props => {
     </>
   );
 };
-
 export default Filters;
