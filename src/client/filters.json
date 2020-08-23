@@ -12,12 +12,12 @@
     {
       "title": "Successful Launch",
       "filterParam": "launch",
-      "options": [{ "id": 1, "value": true }, { "id": 2, "value": false }]
+      "options": [{ "id": 1, "value": "TRUE" }, { "id": 2, "value": "FALSE" }]
     },
     {
       "title": "Successful Landing",
       "filterParam": "landing",
-      "options": [{ "id": 1, "value": true }, { "id": 2, "value": false }]
+      "options": [{ "id": 1, "value": "TRUE" }, { "id": 2, "value": "FALSE" }]
     }
   ]
 }

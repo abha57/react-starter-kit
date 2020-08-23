@@ -6,22 +6,22 @@ import Tiles from './components/Tiles';
 import Loader from './components/Loader';
 import ErrorComponent from './components/ErrorComponent';
 import FILTERS from './filters';
-import { mapUrlFilters } from './utils'; 
-
+import { mapUrlFilters } from './utils';
+import './style.scss';
 
 const Parent = props => {
   const { history, actions, state } = props;
 
   // state data
   const [fixedFilters, setFilters] = useState(FILTERS.filters);
-//   const [state, dispatch] = useReducer(reducer, initialState);
+  //   const [state, dispatch] = useReducer(reducer, initialState);
 
   // hooks
-  useEffect(() => {
-    const { filters } = state;
-    const urlFilters = mapUrlFilters(filters);
-    makeApiCall(urlFilters);
-  }, []);
+  // useEffect(() => {
+  //   const { filters } = state;
+  //   const urlFilters = mapUrlFilters(filters);
+  //   makeApiCall(urlFilters);
+  // }, []);
 
   useEffect(() => {
     const { filters } = state;
@@ -77,7 +77,10 @@ const Parent = props => {
     //     }
     //   }
     // });
-    actions.updateFilters(filterObj)
+    actions.updateFilters(filterObj);
+  };
+  const onFilterReset = () => {
+    actions.resetFilter();
   };
   const { loading, error, data, filters, filtersDisabled } = state;
   return (
@@ -89,6 +92,7 @@ const Parent = props => {
           onFilterChange={onFilterChange}
           filters={fixedFilters}
           disabled={filtersDisabled}
+          resetFilter={onFilterReset}
         />
         <div className="tiles">
           {loading && <Loader />}
@@ -99,6 +103,5 @@ const Parent = props => {
     </>
   );
 };
-
 
 export default withRouter(Parent);

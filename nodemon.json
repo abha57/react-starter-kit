@@ -1,0 +1,6 @@
+{
+  "verbose": true,
+  "legacyWatch": true,
+  "watch": ["dist/server.js"],
+  "ignore": ["**/.*", "**/dist/static/*", "**/node_modules/*", "**/src/*"]
+}

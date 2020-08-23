@@ -1,9 +1,9 @@
 import React from 'react';
 import { chunk } from 'lodash';
-import './style';
+import './style.scss';
 
 const Filters = props => {
-  const { filters, onFilterChange, className, disabled } = props;
+  const { filters, onFilterChange, className, disabled, resetFilter } = props;
   const changeFilter = (filterParam, filterValue) => () => {
     if (disabled) return;
     onFilterChange({
@@ -18,11 +18,11 @@ const Filters = props => {
           <h3>Filters</h3>
           {filters &&
             filters.map(filter => (
-              <div className="filter-row">
+              <div className="filter-row" key={filter.title}>
                 <div className="title">{filter.title}</div>
                 {filter.options &&
-                  chunk(filter.options, 2).map(filterOptions => (
-                    <div className="filter-option-row">
+                  chunk(filter.options, 2).map((filterOptions, index) => (
+                    <div className="filter-option-row" key={index}>
                       {filterOptions.map(option => (
                         <button
                           key={option.value}
@@ -39,6 +39,11 @@ const Filters = props => {
                   ))}
               </div>
             ))}
+          <div className="reset-filter">
+            <button className="reset-option" onClick={resetFilter}>
+              Reset Filters
+            </button>
+          </div>
         </div>
       </div>
     </>

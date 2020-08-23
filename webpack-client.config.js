@@ -1,5 +1,5 @@
 const path = require('path');
-const fs = require('fs');
+// const fs = require('fs');
 const webpack = require('webpack');
 
 // The plugin will generate an HTML5 file for you that includes all your webpack bundles in the body using script tags.
@@ -16,8 +16,8 @@ const staticsPath = path.join(__dirname, './dist/static');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
-const appDirectory = fs.realpathSync(process.cwd());
-const srcDirectory = path.resolve(appDirectory, 'src');
+// const appDirectory = fs.realpathSync(process.cwd());
+// const srcDirectory = path.resolve(appDirectory, 'src');
 
 const plugins = [
   // ExtractCSS,
@@ -58,15 +58,15 @@ module.exports = {
   },
   output: {
     path: staticsPath,
-    filename: '[name].[hash].js',
+    filename: 'bundle.js'
     // filename: '[name].js',
-    publicPath: '/'
+    // publicPath: '/'
   },
   // context: sourcePath,
   // for debugging  in browser's source tab
   // eval-source-map gives original source.You see the code before transpilation, as you authored it.
   devtool: 'eval-source-map',
-  target: 'web',
+  // target: 'web',
   module: {
     rules: [
       {
@@ -84,6 +84,10 @@ module.exports = {
       {
         test: /\.(gif|png|jpg|jpeg|otf|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: 'file-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(s*)css$/,
@@ -121,7 +125,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.scss'],
     modules: [sourcePath, 'node_modules'],
     alias: {
-      client: path.resolve(srcDirectory, 'client')
+      // client: path.resolve(srcDirectory, 'client')
     }
   },
   plugins

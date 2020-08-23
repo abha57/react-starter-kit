@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import types from './types';
 export const initialState = {
   filters: {
@@ -9,7 +10,7 @@ export const initialState = {
   error: null
 };
 
-const reducer = (state, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
     case types.UPDATE_FILTER:
       const { filters } = action.payload;
@@ -31,6 +32,14 @@ const reducer = (state, action) => {
         ...state,
         filtersDisabled: true
       };
+    case types.RESET_FILTER: {
+      return {
+        ...state,
+        filters: {
+          limit: 100
+        }
+      };
+    }
     case types.DATA_LOADING: {
       return {
         ...state,
@@ -58,12 +67,12 @@ const reducer = (state, action) => {
       };
     }
     default:
-      return initialState;
+      return !isEmpty(state) ? state : initialState;
   }
 };
 
 export const selectors = {
-    getState: (state) => state
-}
+  getState: state => state
+};
 
 export default reducer;

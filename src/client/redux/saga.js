@@ -22,6 +22,7 @@ function* fetchDataWorker() {
     yield put(actions.enableFilters());
   } catch (error) {
     yield put(actions.dataError(error));
+    yield put(actions.enableFilters());
   }
 }
 

@@ -28,6 +28,9 @@ const actions = {
     payload: {
       error
     }
+  }),
+  resetFilter: () => ({
+    type: types.RESET_FILTER
   })
 };
 
