@@ -14,15 +14,8 @@ const Parent = props => {
 
   // state data
   const [fixedFilters, setFilters] = useState(FILTERS.filters);
-  //   const [state, dispatch] = useReducer(reducer, initialState);
 
   // hooks
-  // useEffect(() => {
-  //   const { filters } = state;
-  //   const urlFilters = mapUrlFilters(filters);
-  //   makeApiCall(urlFilters);
-  // }, []);
-
   useEffect(() => {
     const { filters } = state;
     const urlFilters = mapUrlFilters(filters);
@@ -30,12 +23,6 @@ const Parent = props => {
   }, [state.filters]);
 
   const makeApiCall = async filters => {
-    // dispatch({
-    //   type: types.DISABLE_FILTERS
-    // });
-    // dispatch({
-    //   type: types.DATA_LOADING
-    // });
     actions.disableFilters();
     actions.dataLoading();
     const urlFilters = qs.stringify(filters);
@@ -43,40 +30,10 @@ const Parent = props => {
       pathname: '/',
       search: `?${urlFilters}`
     });
-    // try {
-    // //   const data = await loadData(urlFilters);
-    // //   dispatch({
-    // //     type: types.DATA_SUCCESS,
-    // //     payload: {
-    // //       data
-    // //     }
-    // //   });
-    // //   dispatch({
-    // //     type: types.ENABLE_FILTERS
-    // //   });
-    // // actions.dataSuccess(data);
-    // //   actions.enableFilters();
-    // } catch (error) {
-    // //   dispatch({
-    // //     type: types.DATA_ERROR,
-    // //     payload: {
-    // //       error
-    // //     }
-    // //   });
-    //   actions.dataError(error);
-    // }
   };
 
   //actions
   const onFilterChange = filterObj => {
-    // dispatch({
-    //   type: types.UPDATE_FILTER,
-    //   payload: {
-    //     filters: {
-    //       ...filterObj
-    //     }
-    //   }
-    // });
     actions.updateFilters(filterObj);
   };
   const onFilterReset = () => {

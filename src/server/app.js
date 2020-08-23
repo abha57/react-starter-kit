@@ -19,6 +19,7 @@ import configureStore from '../client/redux/store';
 
 const app = express();
 const compiler = webpack(clientWebpackConfig);
+const distPath = path.join(__dirname, '/static');
 
 // //Serve static files
 app.use('/static', express.static('../../dist/static'));
@@ -93,7 +94,7 @@ function renderFullPage(html, preloadedState) {
       <head>
         <meta charset="utf-8">
         <title>Sapient Assignment</title>
-        <link href="../../dist/static/main.css" rel="stylesheet">
+        <link href="${distPath}/main.css" rel="stylesheet">
       </head>
       <body>
        <script>
@@ -103,11 +104,11 @@ function renderFullPage(html, preloadedState) {
           )}
         </script>
         <div id="root">${html}</div>
-        <script src="../../dist/static/bundle.js"></script>
+        <script src="${distPath}/bundle.js"></script>
       </body>
     </html>
     `;
-  /* ... */
+  /* .... */
 }
 
 function renderErrorTemplate(html) {
