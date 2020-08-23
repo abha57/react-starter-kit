@@ -5,6 +5,7 @@ import './style.scss';
 const Tiles = props => {
   const { tiles } = props;
   const [refs, setRefs] = useState([]);
+  const [imageObserver, setImageObserver] = useState(null);
 
   const createImageObserver = () => {
     const observer = new IntersectionObserver((entries, self) => {
@@ -18,7 +19,9 @@ const Tiles = props => {
     });
     return observer;
   };
-  const [imageObserver] = useState(createImageObserver);
+  useEffect(() => {
+    setImageObserver(createImageObserver());
+  }, []);
 
   useEffect(() => {
     refs.forEach(ref => {
