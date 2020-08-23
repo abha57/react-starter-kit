@@ -5,7 +5,8 @@
   "scripts": {
     "build": "concurrently \"rm -rf dist\" \"webpack --mode development --config webpack-client.config.js\" \"webpack --mode development --config webpack-server.config.js\"",
     "buildDev": "concurrently \"rm -rf dist\" \"webpack --mode development --config webpack-client.config.js --watch\" \"webpack --mode development --config webpack-server.config.js --watch\"",
-    "start": "nodemon --inspect=7000 ./dist/server.js",
+    "start": "node ./dist/server.js",
+    "startDev": "nodemon --inspect=7000 ./dist/server.js",
     "startClient": "webpack-dev-server --mode development --config webpack-client.config.js --open"
   },
   "dependencies": {
