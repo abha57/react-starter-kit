@@ -1,9 +1,16 @@
 import React from 'react';
 import { chunk } from 'lodash';
+import cx from 'classnames';
 import './style.scss';
 
 const Filters = props => {
-  const { filters, onFilterChange, className, disabled } = props;
+  const {
+    filters,
+    onFilterChange,
+    className,
+    disabled,
+    selectedFilters
+  } = props;
   const changeFilter = (filterParam, filterValue) => () => {
     if (disabled) return;
     onFilterChange({
@@ -26,7 +33,15 @@ const Filters = props => {
                       {filterOptions.map(option => (
                         <button
                           key={option.value}
-                          className="filter-option"
+                          className={cx('filter-option', {
+                            selected:
+                              Object.values(selectedFilters).indexOf(
+                                option.value
+                              ) > -1 &&
+                              Object.keys(selectedFilters).indexOf(
+                                filter.filterParam
+                              ) > -1
+                          })}
                           onClick={changeFilter(
                             filter.filterParam,
                             option.value

@@ -78,9 +78,9 @@
   }
 }
 // tablet styles
-@media screen and (min-width: 700px) and (max-width: 1399px) {
+@media screen and (min-width: 700px) and (max-width: 1023px) {
   .tiles-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     .tile {
       // grid-column: 1/5;
     }
@@ -93,7 +93,7 @@
 // }
 
 // desktop styles
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1024px) {
   .tiles-container {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     .tile {

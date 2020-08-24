@@ -66,6 +66,7 @@ const Parent = props => {
           onFilterChange={onFilterChange}
           filters={fixedFilters}
           disabled={filtersDisabled}
+          selectedFilters={filters}
         />
         <div className="tiles">
           {loading && <Loader />}
