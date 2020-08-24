@@ -8,9 +8,6 @@ import { createStore } from 'redux';
 import webpack from 'webpack';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
-// import webpackDevMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
-// import historyApiFallback from 'connect-history-api-fallback';
 
 import rootReducer from '../client/redux/reducer';
 import App from '../client/app';
@@ -18,21 +15,17 @@ import clientWebpackConfig from '../../webpack-client.config';
 import configureStore from '../client/redux/store';
 
 const app = express();
-const compiler = webpack(clientWebpackConfig);
 const distPath = path.join(__dirname, '/static');
+var expressStaticGzip = require('express-static-gzip');
 
 // //Serve static files
-app.use('/static', express.static('../../dist/static'));
-// app.use(express.static(path.resolve(__dirname, '../../dist')));
-
-// const instance = webpackDevMiddleware(compiler, {
-//   publicPath: clientWebpackConfig.output.publicPath
-// });
-
-// app.use(instance);
-// app.use(historyApiFallback());
-// app.use(instance);
-// app.use(webpackHotMiddleware(compiler));
+// app.use('/static', express.static(path.join(__dirname, './static')));
+// app.use(express.static(path.join(__dirname)));
+app.use(
+  expressStaticGzip(path.join(__dirname), {
+    enableBrotli: true
+  })
+);
 
 // This is fired every time the server side receives a request
 app.use(handleRender);
@@ -63,7 +56,7 @@ function handleRender(req, res) {
       // Render the component to a string
       const html = renderToString(
         <Provider store={store}>
-          <StaticRouter location={'/'} context={{}}>
+          <StaticRouter location={req.url} context={{}}>
             <App />
           </StaticRouter>
         </Provider>
@@ -94,7 +87,7 @@ function renderFullPage(html, preloadedState) {
       <head>
         <meta charset="utf-8">
         <title>Sapient Assignment</title>
-        <link href="${distPath}/main.css" rel="stylesheet">
+        <link href="./static/main.css" rel="stylesheet">
       </head>
       <body>
        <script>
@@ -104,11 +97,11 @@ function renderFullPage(html, preloadedState) {
           )}
         </script>
         <div id="root">${html}</div>
-        <script src="${distPath}/bundle.js"></script>
+        <script src="./static/bundle.js"></script>
       </body>
     </html>
     `;
-  /* .... */
+  /* ..... */
 }
 
 function renderErrorTemplate(html) {

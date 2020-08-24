@@ -66,6 +66,13 @@ const reducer = (state = {}, action) => {
         data: null
       };
     }
+    case types.UPDATE_ALL_FILTERS: {
+      const { filters } = action.payload;
+      return {
+        ...state,
+        filters
+      };
+    }
     default:
       return !isEmpty(state) ? state : initialState;
   }

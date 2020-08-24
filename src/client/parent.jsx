@@ -6,7 +6,7 @@ import Tiles from './components/Tiles';
 import Loader from './components/Loader';
 import ErrorComponent from './components/ErrorComponent';
 import FILTERS from './filters';
-import { mapUrlFilters } from './utils';
+import { mapUrlFilters, mapRevFilters } from './utils';
 import './style.scss';
 
 const Parent = props => {
@@ -16,11 +16,24 @@ const Parent = props => {
   const [fixedFilters, setFilters] = useState(FILTERS.filters);
 
   // hooks
+  // useEffect(() => {
+  //   const { filters } = state;
+  //   const urlFilters = mapUrlFilters(filters);
+  //   // makeApiCall(urlFilters);
+  // }, [state.filters]);
+
   useEffect(() => {
-    const { filters } = state;
-    const urlFilters = mapUrlFilters(filters);
-    makeApiCall(urlFilters);
-  }, [state.filters]);
+    const {
+      location: { search }
+    } = history;
+    let filters = qs.parse(search.substr(1));
+    if (Object.keys(filters).length > 1) {
+      filters = mapRevFilters(filters);
+      actions.updateAllFilters(filters);
+      // const urlFilters = mapUrlFilters(filters);
+      makeApiCall(filters);
+    }
+  }, []);
 
   const makeApiCall = async filters => {
     actions.disableFilters();
@@ -35,9 +48,13 @@ const Parent = props => {
   //actions
   const onFilterChange = filterObj => {
     actions.updateFilters(filterObj);
-  };
-  const onFilterReset = () => {
-    actions.resetFilter();
+    const { filterParam, filterValue } = filterObj;
+    const { filters } = state;
+    const urlFilters = mapUrlFilters({
+      ...filters,
+      [filterParam]: filterValue
+    });
+    makeApiCall(urlFilters);
   };
   const { loading, error, data, filters, filtersDisabled } = state;
   return (
@@ -49,7 +66,6 @@ const Parent = props => {
           onFilterChange={onFilterChange}
           filters={fixedFilters}
           disabled={filtersDisabled}
-          resetFilter={onFilterReset}
         />
         <div className="tiles">
           {loading && <Loader />}

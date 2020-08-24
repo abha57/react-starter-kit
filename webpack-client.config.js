@@ -10,6 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const sourcePath = path.join(__dirname, './src/client');
 const staticsPath = path.join(__dirname, './dist/static');
 
@@ -51,6 +52,18 @@ const plugins = [
   new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ja|it/)
 ];
 
+if (isProd) {
+  plugins.push(
+    new CompressionPlugin({
+      filename: '[path].br',
+      algorithm: 'brotliCompress',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  );
+}
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -58,9 +71,9 @@ module.exports = {
   },
   output: {
     path: staticsPath,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
     // filename: '[name].js',
-    // publicPath: '/'
+    publicPath: '/static/'
   },
   // context: sourcePath,
   // for debugging  in browser's source tab

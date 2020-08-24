@@ -31,6 +31,12 @@ const actions = {
   }),
   resetFilter: () => ({
     type: types.RESET_FILTER
+  }),
+  updateAllFilters: filters => ({
+    type: types.UPDATE_ALL_FILTERS,
+    payload: {
+      filters
+    }
   })
 };
 

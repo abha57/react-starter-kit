@@ -3,7 +3,7 @@ import { chunk } from 'lodash';
 import './style.scss';
 
 const Filters = props => {
-  const { filters, onFilterChange, className, disabled, resetFilter } = props;
+  const { filters, onFilterChange, className, disabled } = props;
   const changeFilter = (filterParam, filterValue) => () => {
     if (disabled) return;
     onFilterChange({
@@ -39,11 +39,6 @@ const Filters = props => {
                   ))}
               </div>
             ))}
-          <div className="reset-filter">
-            <button className="reset-option" onClick={resetFilter}>
-              Reset Filters
-            </button>
-          </div>
         </div>
       </div>
     </>
