@@ -18,13 +18,4 @@ const App = connect(
   mapDispatchToProps
 )(Parent);
 
-// const App = () => (
-//   <BrowserRouter>
-//     <Switch>
-//       <Route path="/" component={ConnectedParent} exact />
-//       <Route component={ErrorComponent} />
-//     </Switch>
-//   </BrowserRouter>
-// );
-
 export default App;

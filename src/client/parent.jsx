@@ -16,11 +16,6 @@ const Parent = props => {
   const [fixedFilters, setFilters] = useState(FILTERS.filters);
 
   // hooks
-  // useEffect(() => {
-  //   const { filters } = state;
-  //   const urlFilters = mapUrlFilters(filters);
-  //   // makeApiCall(urlFilters);
-  // }, [state.filters]);
 
   useEffect(() => {
     const {
@@ -30,8 +25,9 @@ const Parent = props => {
     if (Object.keys(filters).length > 1) {
       filters = mapRevFilters(filters);
       actions.updateAllFilters(filters);
+      const urlFilters = mapUrlFilters(filters);
       // const urlFilters = mapUrlFilters(filters);
-      makeApiCall(filters);
+      makeApiCall(urlFilters);
     }
   }, []);
 
