@@ -32,7 +32,7 @@ const Filters = props => {
                     <div className="filter-option-row" key={index}>
                       {filterOptions.map(option => (
                         <button
-                          key={option.value}
+                          key={option.label}
                           className={cx('filter-option', {
                             selected:
                               Object.values(selectedFilters).indexOf(
@@ -47,7 +47,7 @@ const Filters = props => {
                             option.value
                           )}
                         >
-                          {option.value}
+                          {option.label}
                         </button>
                       ))}
                     </div>
