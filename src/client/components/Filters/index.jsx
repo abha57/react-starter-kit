@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { chunk } from 'lodash';
 import cx from 'classnames';
 import './style.scss';
@@ -11,6 +11,21 @@ const Filters = props => {
     disabled,
     selectedFilters
   } = props;
+  const isSelected = (value, filter) => {
+    let selected = false;
+    // Object.keys(selectedFilters).map(key => {
+    //   if (selectedFilters[filter] && selectedFilters[key] === value)
+    //     selected = true;
+    // });
+    const keyArr = Object.keys(selectedFilters);
+    for (let i = 0; i < keyArr.length; i++) {
+      if (keyArr[i] === filter && selectedFilters[keyArr[i]] === value) {
+        selected = true;
+        break;
+      }
+    }
+    return selected;
+  };
   const changeFilter = (filterParam, filterValue) => () => {
     if (disabled) return;
     onFilterChange({
@@ -34,13 +49,10 @@ const Filters = props => {
                         <button
                           key={option.label}
                           className={cx('filter-option', {
-                            selected:
-                              Object.values(selectedFilters).indexOf(
-                                option.value
-                              ) > -1 &&
-                              Object.keys(selectedFilters).indexOf(
-                                filter.filterParam
-                              ) > -1
+                            selected: isSelected(
+                              option.value,
+                              filter.filterParam
+                            )
                           })}
                           onClick={changeFilter(
                             filter.filterParam,
