@@ -1,0 +1,54 @@
+.filter-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+
+  h3 {
+    grid-column: 1/5;
+    grid-row: 1;
+  }
+
+  .filter-row {
+    grid-column: 1/5;
+    .title {
+      font-size: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .filter-option-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 10px;
+
+      .filter-option {
+        padding: 10px 25px;
+        background: #ccffcc;
+        border-radius: 10px;
+        border: 0;
+        cursor: pointer;
+      }
+      .selected {
+        background: #2cb82c;
+      }
+    }
+  }
+
+  .reset-filter {
+    grid-column: 1/5;
+    justify-content: center;
+    margin-top: 10px;
+    .reset-option {
+      padding: 10px 25px;
+      background: #ccffcc;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+// desktop styles
+@media screen and (min-width: 1400px) {
+}

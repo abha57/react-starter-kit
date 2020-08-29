@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {  useEffect } from "react";
 import { Provider, connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -73,4 +74,26 @@ const App = () => {
   );
 };
 
+=======
+import React from 'react';
+import { connect } from 'react-redux';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import actions from './redux/actions';
+import Parent from './parent';
+import ErrorComponent from './components/ErrorComponent';
+
+const mapStateToProps = state => ({
+  state: state
+});
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
+
+const App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Parent);
+
+>>>>>>> 38a59041df9a5a1d9457f3dc750a0fa9a0c067b8
 export default App;
