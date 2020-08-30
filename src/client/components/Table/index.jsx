@@ -1,40 +1,34 @@
-import React, {useState} from 'react';
-import Modal from 'react-modal';
+import React from 'react';
+import './style.scss';
 
-const Table = (props) => {
-    const { data, onApprove, onReject } = props;
-    const [rejectSelected, setRejectSeleted] = useState(false);
-    const approve = (approvalRowData) => () => {
-        onApprove(approvalRowData);
-    };
-    const renderData = (data) => {
-        {}
-        return (
-            
-            data.map(row) => <trow>
-        <td>{row.mobile}</td>
-        <td>{row.earningId}</td>
-        <td>{row.earning}</td>
-        <td>
-        <button onClick={approve(row)}>Approve</button>
-         <button onClick={onReject}>Reject</button>
-        </td>
-        </trow>)
-    }
-    return (
-        <table>
-        
-        <thead>
-        <th>Mobile</th>
-        <th>Earning Id</th>
-        <th>Earing</th>
-        <th>Actions</th>
-        </thead>
-        <tbody>
-        {data.length > 0 ? renderData(data) : (<trow colspan={4}>No records found.</trow>)}
-        </tbody>
-        </table>
-    )
+const Table = props => {
+  const { data } = props;
+
+  return (
+    <table className="table">
+      <thead className="table-header">
+        <tr>
+          <th>Mobile</th>
+          <th>Earning Id</th>
+          <th>Earning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.length > 0 ? (
+          data.map((row, index) => (
+            <tr key={row.earningId}>
+              <td>{row.mobile}</td>
+              <td>{row.earningId}</td>
+              <td>{row.earning}</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <th colSpan={3}> No records found.</th>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  );
 };
-
 export default Table;
