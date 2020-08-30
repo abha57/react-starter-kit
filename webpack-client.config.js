@@ -125,10 +125,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.scss'],
+<<<<<<< HEAD
     modules: [sourcePath, 'node_modules'],
     alias: {
       // client: path.resolve(srcDirectory, 'client')
     }
+=======
+    modules: [sourcePath, 'node_modules']
+>>>>>>> aae68ea3f0da659abd2d69cf1ced99dc1f341af8
   },
   plugins
 };

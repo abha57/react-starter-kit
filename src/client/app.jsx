@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, {  useEffect } from "react";
 import { Provider, connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -35,9 +36,63 @@ const App = (props) => {
            <RightPanel data= { rightPanel} />
         </React.Fragment>
     )
+=======
+import React, { useState } from 'react';
+import readXlsxFile from 'read-excel-file';
+
+import './style.scss';
+
+import ExcelTable from './components/ExcelTable';
+import Dropzone from './components/Dropzone';
+const excelSchema = {
+  mobile: {
+    prop: 'mobile',
+    type: Number
+  },
+  earning_id: {
+    prop: 'id',
+    type: Number
+  },
+  earning: {
+    prop: 'earning',
+    type: Number
+  }
+>>>>>>> aae68ea3f0da659abd2d69cf1ced99dc1f341af8
 };
 
+const App = () => {
+  const [data, setData] = useState([]);
+  const [approvals, setApprovals] = useState([]);
+  const [rejects, setRejects] = useState(null);
+  const onAction = data => {
+    console.log('data from modal', data);
+  };
+  const onFileUpload = file => {
+    readXlsxFile(file, { excelSchema }).then(rows => {
+      rows.shift();
+      const mapRowData = [];
+      rows.map(entry => {
+        mapRowData.push({
+          mobile: entry[0],
+          earningId: entry[1],
+          earning: entry[2]
+        });
+      });
+      setData(mapRowData);
+    });
+  };
+  return (
+    <React.Fragment>
+      <div className="container">
+        <h1 className="heading">OYE RICKSHAW ASSIGNMENT</h1>
+        <Dropzone className={'dropzone'} onFileUpload={onFileUpload} />
+        <ExcelTable className="excel-table" data={data} onAction={onAction} />
+      </div>
+    </React.Fragment>
+  );
+};
 
+<<<<<<< HEAD
 const mapStateToProps = (state) => ({
  loading: state.loading,
  error: state.error,
@@ -96,4 +151,6 @@ const App = connect(
 )(Parent);
 
 >>>>>>> 38a59041df9a5a1d9457f3dc750a0fa9a0c067b8
+=======
+>>>>>>> aae68ea3f0da659abd2d69cf1ced99dc1f341af8
 export default App;

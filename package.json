@@ -34,6 +34,7 @@
     "querystring": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
@@ -42,6 +43,14 @@
     "sass-loader": "^8.0.2",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
+=======
+    "react-dropzone": "^11.0.3",
+    "react-modal": "^3.11.2",
+    "react-router": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "read-excel-file": "^4.0.7",
+    "sass-loader": "^8.0.2"
+>>>>>>> aae68ea3f0da659abd2d69cf1ced99dc1f341af8
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

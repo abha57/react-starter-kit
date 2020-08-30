@@ -1,0 +1,28 @@
+.table {
+  .table-header {
+    background: #d1d1e0;
+    padding: 20px 0px;
+    text-align: center;
+    th {
+      height: 50px;
+      padding: 5px;
+    }
+  }
+  td {
+    padding: 20px;
+  }
+  tr {
+    text-align: center;
+  }
+
+  .actions-column {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.button {
+  padding: 5px;
+  border: 1px solid #e0e0eb;
+  border-radius: 5px;
+}
